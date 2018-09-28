@@ -518,6 +518,7 @@ JNIEXPORT jboolean JNICALL Java_jssc_SerialNativeInterface_writeBytes
     jbyte* jBuffer = env->GetByteArrayElements(buffer, JNI_FALSE);
     jint bufferSize = env->GetArrayLength(buffer);
     jint result = write(portHandle, jBuffer, (size_t)bufferSize);
+    tcdrain(portHandle);
     env->ReleaseByteArrayElements(buffer, jBuffer, 0);
     return result == bufferSize ? JNI_TRUE : JNI_FALSE;
 }
