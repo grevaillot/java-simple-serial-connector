@@ -1310,4 +1310,8 @@ public class SerialPort {
             }
         }
     }
+
+    static {
+        System.loadLibrary("JSSCLib");
+    }
 }
